@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <style>
+        *{
+            padding: 5px;
+            margin: 10px;
+            font-size: 20px;
+            align-content: center;
+        }
+        .container{
+            width: 340px;
+            height: 400px;
+            border: solid 2px black;
+            padding: 10px;
+            margin-left: 35%;
+        }
+        #situacao{
+            height: 50px;
+            width: 100px;
+            border-radius: 5px;
+            color: black;
+        }
+        .botao{
+            width: 300px;
+            background: green;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+        .botao:hover{
+            background: greenyellow;
+            color: gray;
+        }
+        input{
+            width: 285px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html"><button class="botao">Voltar</button></a>
+    <div class="container">
+    <form action="">
+        <label for="altura">Altura: </label>
+        <input type="text" id="altura" placeholder="Exemplo: 1.65">
+        <br>
+        <label for="peso">Peso: </label>
+        <input type="text" id="peso" placeholder="Peso em KG">
+        <br>
+        <input class="botao" type="submit" onclick="calcular()">
+    </form>
+    <p>IMC: <span id="resultado"></span></p>
+    <p>Situação: <span id="situacao"></span></p>
+    </div>
+    <script>
+                function calcular() {
+            let altura = parseFloat(document.getElementById("altura").value);
+            let peso = parseFloat(document.getElementById("peso").value);
+            let imc = (peso)/(altura*altura);
+            document.getElementById('resultado').innerHTML = imc;
+            if (imc < 17) {
+                document.getElementById('resultado').value;  
+                situacao.innerHTML = 'Muito abaixo do peso'; 
+                situacao.style.background = 'red';
+            } else if(imc >= 17 && imc <=18.49) {
+                document.getElementById('resultado').value
+                situacao.innerHTML = 'Abaixo do peso';  
+                situacao.style.background = 'orange';
+            } else if(imc >= 18.50 && imc <= 24.99) {
+                document.getElementById('resultado').value
+                situacao.innerHTML = 'Peso normal';  
+                situacao.style.background = 'green';
+            } else if(imc >= 25 && imc <= 29.99) {
+                document.getElementById('resultado').value
+                situacao.innerHTML = 'Acima do peso';  
+                situacao.style.background = 'yellow';
+            }else if(imc >= 30 && imc <= 34.99) {
+                document.getElementById('resultado').value
+                situacao.innerHTML = 'Obesidade I';  
+                situacao.style.background = 'orange';
+            }else if(imc >= 35 && imc <= 39.99) {
+                document.getElementById('resultado').value
+                situacao.innerHTML = 'Obesidade II (severa)';  
+                situacao.style.background = 'orangered';
+            }else if(imc > 40) {
+                document.getElementById('resultado').value
+                situacao.innerHTML = 'Obesidade III (mórbita)';  
+                situacao.style.background = 'red';
+            }
+            event.preventDefault();
+        }
+    </script>
+</body>
+</html>

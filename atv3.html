@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+    <style>
+        * {
+            background: gray;
+            color: black;
+            padding: auto;
+        }
+
+        .container {
+            display: block;
+            padding: 20px;
+            margin: auto;
+            height: 300px;
+            width: 350px;
+            border: solid 2px black;
+            font-size: 20px;
+        }
+
+        .botao {
+            text-align: center;
+            height: 50px;
+            width: 320px;
+            font-size: 20px;
+            border: none;
+            background: lightblue;
+            border-radius: 10px;
+        }
+
+        .botao:hover {
+            background: blue;
+        }
+
+        .item {
+            background-color: aliceblue;
+            border: none;
+            width: 300px;
+            border-radius: 10px;
+            font-size: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Elementos da lista</h1>
+    <h2>Usando método appendChild() </h2>
+
+    <div class="container">
+        <form>
+            <label for="item">Novo item:</label>
+            <input type="text" id="item" class="item">
+            <br>
+            <br>
+            <label for="azul">Azul</label>
+            <input type="radio" id="azul" name="color" value="azul">
+            <br>
+            <label for="verde">Verde</label>
+            <input type="radio" id="verde" name="color" value="verde">
+            <br>
+            <label for="vermelho">Vermelho</label>
+            <input type="radio" id="vermelho" name="color" value="vermelho">
+        </form>
+        <p>Clique em "adicionar" para colocar mais um elemento na lista:</p>
+
+        <button class="botao" onclick="myFunction()">Adicionar</button>
+    </div>
+
+    <ul id="myList">
+        <li>Café</li>
+        <li>Chá</li>
+    </ul>
+    <script>
+        function myFunction() {
+            let cor;
+
+            // Verificar qual opção de rádio está marcada
+            if (document.getElementById("azul").checked) {
+                cor = "blue";
+            } else if (document.getElementById("verde").checked) {
+                cor = "green";
+            } else if (document.getElementById("vermelho").checked) {
+                cor = "red";
+            } else {
+                // Se nenhuma opção estiver marcada, definir cor padrão
+                cor = "black";
+            }
+
+            // Criar um nó "li":
+            const lista = document.createElement("li");
+
+            // Criar um nó de texto:
+            let item = document.getElementById('item').value;
+            const textolista = document.createTextNode(item);
+
+            // Definir a cor do texto no nó "li":
+            lista.style.color = cor;
+
+            // Adicionar o texto ao nó "li":
+            lista.appendChild(textolista);
+
+            // Adicionar o nó "li" à lista:
+            document.getElementById("myList").appendChild(lista);
+        }
+
+
+    </script>
+</body>
+
+</html>
